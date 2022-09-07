@@ -1,0 +1,30 @@
+.form {
+    margin: 50px auto;
+    width: 800px;
+    background-color: #ffffff;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.bodyStyle {
+    background-color: #ECEDF2;
+}
+
+.panel {
+    margin: 0 auto;
+}
+
+.button {
+    text-align: center
+}
+
+.textarea {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.selectOneMenu {
+    width: 500px
+}

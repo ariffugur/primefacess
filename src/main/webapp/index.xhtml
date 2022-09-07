@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet name="common-style.css" library="css"/>
+</h:head>
+<h:body styleClass="bodyStyle">
+
+    <b:form styleClass="form">
+        <p:messages />
+
+        <br />
+        <br />
+        <h1
+                style="text-align: center; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">FlowConf2022
+            Form</h1>
+        <br />
+        <br />
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">Entering
+            new markets, creating new or more sophisticated products or services
+            inevitably ensures that organizational complexity increases.
+            Therefore, challenges will also become more complex in organizations.
+            This year we will focus on systems thinking</p>
+
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 110%">
+            20 October 2022 I Elite World Asia <br /> 21 October 2022 I Online <br />
+            hello@flowconf.com
+        </p>
+        <br />
+        <br />
+        <h2 style="font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">Satınalma
+            Yetkilisi / Buyer Responsible</h2>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">Satınalma/kayıt
+            işlemini yapan kişinin doldurması gereklidir.</p>
+        <br />
+        <p:panel
+                header="Satınalma
+			Yetkilisi Formu / Buyer Responsible Form"
+                style="margin-bottom:10px;">
+            <h:panelGrid columns="3" cellpadding="5" id="panelBuyer">
+
+                <p:outputLabel for="buyerName" value=" İsim / Name" />
+                <p:inputText  id="buyerName" required="true" value="#{managedBeans.name}" maxlength="11"
+                             requiredMessage="İsim alanı boş bırakılamaz!" />
+                <p:messages for="buyerName" />
+
+                <p:outputLabel for="buyerSurname" value="Soyisim / Surname" />
+                <p:inputText id="buyerSurname" required="true" value="#{managedBeans.surname}" maxlength="11"
+                             requiredMessage="Soyisim alanı boş bırakılamaz!" />
+                <p:messages for="buyerSurname" />
+
+                <p:outputLabel for="buyerEmail" value="Eposta / Email" />
+                <p:inputText id="buyerEmail" required="true" value="#{managedBeans.email}"
+                             requiredMessage="Eposta alanı boş bırakılamaz!"
+                             validatorMessage="Hatalı Eposta girişi">
+                <f:validateRegex
+                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                </p:inputText>
+                <p:messages for="buyerEmail" />
+
+                <p:outputLabel for="buyerPhone"
+                               value="Telefon Numarası / Phone Number" />
+                <p:inputMask id="buyerPhone" value="#{managedBeans.phone}" mask="(999) 999-9999" requiredMessage="Telefon alanı boş bırakılamaz!" />
+                <p:messages for="buyerPhone" />
+            </h:panelGrid>
+        </p:panel>
+        <br />
+        <br />
+        <h2 style="font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">Fatura
+            Bilgileri / Invoice Information</h2>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">Fatura
+            bilgileri için firmanız ile kayıt işlemi öncesinde teyitleşemenizi
+            önemle rica ederiz.</p>
+        <br />
+
+        <h:panelGrid columns="3" cellpadding="5" styleClass="panel"
+                     id="selectCompany">
+
+            <p:selectOneMenu value="#{managedBeans.company}" style="width: 500px"    required="true" requiredMessage="Please select a value."  >
+                <p:ajax update="@this" process="@this"/>
+                requiredMessage="Şirket / Şahıs alanı boş bırakılamaz!">
+
+                <f:selectItem itemLabel="Lütfen Birini Seçiniz"
+                              itemValue="#{null}" />
+                <f:selectItem  itemLabel="Şirket / Company"
+                               itemValue="Şirket / Company"  />
+                <f:selectItem itemLabel="Şahıs Şirketi / Private Company"
+                              itemValue="Şahıs Şirketi / Private Company" />
+                <f:selectItem itemLabel="Bireysel / Individual"
+                              itemValue="Bireysel / Individual"  />
+            </p:selectOneMenu>
+            <p:message for="selectCompany" />
+
+        </h:panelGrid>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p:panel
+                header="Fatura
+			Bilgileri Formu / Invoice Information Form"
+                style="margin-bottom:10px;">
+            <h:panelGrid columns="3" cellpadding="5" id="panelInvoice">
+                <p:outputLabel for="invoiceCompany"
+                               value="Firma Unvanı / Company Name" />
+                <p:inputText id="invoiceCompany" required="false" value="#{managedBeans.company_name}"/>
+                <p:message for="invoiceCompany" />
+
+                <p:outputLabel for="invoiceAddress"
+                               value="Fatura Adresi / Invoice Address" />
+                <p:inputText id="invoiceAddress" required="true"
+                             requiredMessage="Fatura Adresi alanı boş bırakılamaz!" value="#{managedBeans.invoice_address}"/>
+                <p:message for="invoiceAddress" />
+
+                <p:outputLabel for="invoiceCity" value="Şehir /City" />
+                <p:inputText id="invoiceCity" required="true"
+                             requiredMessage="Şehir alanı boş bırakılamaz!" value="#{managedBeans.city}"/>
+                <p:message for="invoiceCity" />
+
+            </h:panelGrid>
+        </p:panel>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">Şahıs
+            firmaları için Vergi Numarası kısmına TC kimlik numarası yazılması
+            yeterlidir.</p>
+        <br />
+        <br />
+        <br />
+        <p:panel header="Vergi Formu / Tax Form">
+            <h:panelGrid columns="3" cellpadding="5" id="panelTax">
+             <p:outputLabel for="taxId" value="Vergi Numarası / Tax ID" />
+                <p:inputMask id="taxId" required="true" requiredMessage="Vergi Numarası  boş bırakılamaz!" value="#{managedBeans.tax_id}" mask="999999999" validateMask="true" />
+                <p:message for="taxId" />
+
+                <p:outputLabel for="taxOffice" value="Vergi Dairesi / Tax Office" />
+                <p:inputText id="taxOffice" required="false"
+                             requiredMessage="Vergi Dairesi alanı boş bırakılamaz!" value="#{managedBeans.tax_office}"
+                />
+                <p:message for="taxOffice" />
+            </h:panelGrid>
+        </p:panel>
+        <br />
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">Kdv
+            Tevkifat Muafiyeti için firmanız ile teyitleşmeniz gereklidir. Firma
+            beyanı esas alınmaktadır. Yasal sorumluluk beyan veren firmaya
+            aittir. Kodu 616: 5018 sayılı kanuna ekli cetvellerdeki idare, kurum
+            ve kuruluşlara yapılan diğer hizmetler.</p>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">This
+            exemption is only for Turkish Customers.</p>
+        <br />
+        <br />
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%; text-align: center;">Kdv
+            Tevkifat Muafiyeti / Vat Exemption</p>
+
+        <h:panelGrid columns="3" cellpadding="5" id="selectTax"  styleClass="panel">
+
+            <p:selectOneMenu value="#{managedBeans.vax_exemption}" style="width: 500px"    required="true" requiredMessage="Please select a value."  >
+                <p:ajax update="@this" process="@this"/>
+                <f:selectItem itemLabel="Lütfen Birini Seçiniz"
+                              itemValue="#{null}" />
+                <f:selectItem itemLabel="Var / Kodu: 616 - Muafiyet Oranı: 5/10"
+                              itemValue="Var / Kodu: 616 - Muafiyet Oranı: 5/10" />
+                <f:selectItem itemLabel="Yok" itemValue="Yok" />
+
+            </p:selectOneMenu>
+            <p:message for="selectTax" />
+
+        </h:panelGrid>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h2 style="font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">Katılımcı
+            Bilgileri / Attendees Information</h2>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">Katılımcı
+            bilgileri eğer belli değilse boş bırakabilirsiniz. Katılımcı
+            bilgilerini 30 Nisan tarihine kadar bizimle mail ile paylaşmanız
+            gereklidir.</p>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">
+            If you do not know the participant information you can skip this
+            part. Attendees' information should be shared via email by 30th
+            April.</p>
+        <br />
+        <p:panel
+                header="Katılımcı
+			Bilgileri Formu/ Attendees Information Form"
+                style="margin-bottom:10px;">
+            <h:panelGrid columns="3" cellpadding="5" id="panelAttendees">
+                <p:outputLabel for="numberAttendees"
+                               value="Katılımcı Sayısı / Number of Attendees" />
+                <p:inputNumber id="numberAttendees" required="true"
+                               maxValue="99" decimalPlaces="0"
+                             requiredMessage="Katılımcı Sayısı alanı boş bırakılamaz!"  value="#{managedBeans.number_of_attendees}"/>
+                <p:message for="numberAttendees" />
+
+                <p:outputLabel for="attendeesSubscriber"
+                               value="Katılımcı: Ad Soyad " />
+                <p:inputText id="attendeesSubscriber" required="true"
+                             requiredMessage="Katılımcı alanı boş bırakılamaz!" value="#{managedBeans.attendees_information}" />
+                <p:message for="attendeesSubscriber" />
+            </h:panelGrid>
+        </p:panel>
+        <br />
+        <br />
+        <h2 style="font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">Bilet
+            Fiyatlandırma / Ticket Pricing</h2>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">
+            İndirimden faydalanmak için her kategori için belirtilen tarihten
+            önce ödeme işlemin tamamlanması gerekmektedir. Aksi durumda sipariş
+            iptal edilecektir. Fatura düzenlendi ise aradaki tutar ayrıca fatura
+            edilecektir. Katılımcı sayısına göre grup indirimi proforma
+            faturanızda paylaşılacaktır.</p>
+        <br />
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%; text-align: center;">
+            Bilet Kategorileri / Ticket Categories</p>
+
+
+        <h:panelGrid columns="3" cellpadding="5" id="selectTicket" styleClass="panel">
+
+            <p:selectOneMenu value="#{managedBeans.ticket_categories}" style="width: 500px"   required="true" requiredMessage="Please select a value." >
+
+                <p:ajax update="@this" process="@this"/>
+                <f:selectItem itemLabel="Lütfen Birini Seçiniz"
+                              itemValue="#{null}" />
+
+                <f:selectItem
+                        itemLabel="Early Bird Ticket: 1.750 ₺ + %18 Vat - Valid until 30th August"
+                        itemValue="Early Bird Ticket: 1.750 ₺ + %18 Vat - Valid until 30th August" />
+                <f:selectItem
+                        itemLabel="Regular Ticket: 1.950 ₺ + %18 Vat - Valid until 15th October"
+                        itemValue="Regular Ticket: 1.950 ₺ + %18 Vat - Valid until 15th October" />
+
+            </p:selectOneMenu>
+            <p:message for="selectTicket" />
+
+        </h:panelGrid>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%">
+
+            Proforma fatura ile beraber seçmiş olduğunuz ödeme yöntemine göre
+            gerekli bilgiler paylaşılacaktır. Ödeme öncesinde fatura gerekli ise
+            notlar kısmından ya da mail ile bize dönüş yapabilirsiniz.</p>
+        <br />
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%; text-align: center;">
+            Ödeme Metodu / Payment Method</p>
+        <h:panelGrid columns="3" cellpadding="5" id="selectCredit" styleClass="panel">
+
+            <p:selectOneMenu value="#{managedBeans.payment_method}" style="width: 500px" required="true" requiredMessage="Please select a value."  >
+                <p:ajax update="@this" process="@this"/>
+                <f:selectItem itemLabel="Lütfen Birini Seçiniz"
+                              itemValue="#{null}" />
+                <f:selectItem itemLabel="Kredi Kartı / Credit Card"
+                              itemValue="Kredi Kartı / Credit Card" />
+                <f:selectItem itemLabel="Banka Transferi / Bank Transfer"
+                              itemValue="Banka Transferi / Bank Transfer" />
+            </p:selectOneMenu>
+            <p:message for="selectCredit" />
+        </h:panelGrid>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <p/>
+        <p
+                style="font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif; font-size: 120%; text-align: center;">
+            Notunuz / Notes ?</p>
+        <p:inputTextarea styleClass="textarea" rows="10" cols="90"
+                         completeMethod="#{inputTextareaView.completeArea}" queryDelay="750"
+                         minQueryLength="4"
+                         placeholder="Örn: Sipariş numarası, Purchase Order Number" value="#{managedBeans.notes}">
+            <p:ajax event="itemSelect" listener="#{inputTextareaView.onSelect}" />
+
+        </p:inputTextarea>
+        <br />
+        <br />
+        <br />
+        <p:outputPanel>
+        <p:messages showDetail="true"/>
+        <p:captcha label="Captcha"  />
+        </p:outputPanel>
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <p:outputPanel styleClass="button">
+            <p:commandButton id="submitButton" value="Kayıt Ol / Register" action="#{managedBeans.saveDatasToDatabase()}"
+                             update="panelBuyer panelInvoice panelTax panelAttendees selectTicket selectCredit selectTax selectCompany" />
+        </p:outputPanel>
+        <br />
+        <br />
+    </b:form>
+
+</h:body>
+</html>
